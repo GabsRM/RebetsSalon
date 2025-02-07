@@ -1,0 +1,77 @@
+form {
+    width: 350px;
+}
+
+/* Estilo para el título */
+mat-dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff4081;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el contenido */
+  mat-dialog-content {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para los campos de formulario */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Estilo para las etiquetas de los campos de formulario */
+  mat-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+  }
+  
+  /* Estilo para los campos de entrada */
+  input.mat-input,
+  mat-select {
+    font-size: 16px;
+    color: #333;
+  }
+  /* Estilo para los iconos en los campos de entrada */
+  mat-icon {
+    color: #999;
+    margin-right: 2px;
+  }
+  
+  /* Estilo para los botones en el pie de página */
+  mat-dialog-actions {
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  button.mat-raised-button {
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+  }
+  
+  button[color="warn"] {
+    background-color: #ff5252;
+    color: #fff;
+  }
+  
+  button[color="primary"] {
+    background-color: #ff4081;
+    color: #fff;
+  }
+  
+  button[color="primary"]:hover {
+    background-color: #e91e63;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .form-field {
+    opacity: 100%;
+  }

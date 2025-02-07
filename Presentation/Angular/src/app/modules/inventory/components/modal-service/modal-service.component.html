@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>{{actionTitle}} Servicio</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formProduct">
+        <mat-grid-list cols="1" rowHeight="90px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput autocomplete="off" formControlName="description">
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Código de Barra</mat-label>
+                    <input matInput autocomplete="off" formControlName="barcode">
+                    <mat-icon matSuffix>assignment</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Precio</mat-label>
+                    <input matInput autocomplete="off" formControlName="price" type="number">
+                    <mat-icon matSuffix>attach_money</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="formProduct.invalid"
+        (click)="saveEdit_Product()">{{actionButton}}</button>
+
+</mat-dialog-actions>

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Editar accesos del usuario</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formSecurity">
+    <div class="row row-cols-1 row-cols-sm-1 rol-cols-md-1 row-cols-lg-1">
+      <div class="fv-row mb-7">
+        <label class="fs-6 fw-semibold form-label mt-3">
+          <span class="required">Rol</span>
+          <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Roles del sistemaa"></i>
+        </label>
+        <mat-select class="form-select form-select-solid py-3" formControlName="roles" multiple>
+          <mat-option value="admin">Administrador del Sistema</mat-option>
+          <mat-option value="seller">Vendedor</mat-option>
+          <mat-option value="invmanager">Gestor de Inventario</mat-option>
+        </mat-select>
+      </div>
+      <div class="fv-row mb-7">
+        <label class="fs-6 fw-semibold form-label mt-3">
+          <span class="required">Sucursal</span>
+          <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+            title="Enter the contact's phone number (optional)."></i>
+        </label>
+        <mat-select class="form-select form-select-solid py-3" formControlName="defaultBranch">
+          <mat-option [value]="null">Seleccionar la sucursal</mat-option>
+          <mat-option *ngFor="let item of branchs" [value]="item.branchId">{{ item.name }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="formSecurity.invalid" (click)="save()">{{actionButton}}</button>
+</mat-dialog-actions>

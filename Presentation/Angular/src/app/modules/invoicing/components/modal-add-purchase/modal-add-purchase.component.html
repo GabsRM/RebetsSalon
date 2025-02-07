@@ -1,0 +1,187 @@
+<h2 mat-dialog-title>Añadir nueva compra</h2>
+
+<mat-stepper orientation="vertical" linear="true" #stepper>
+  <mat-step [stepControl]="providerFormGroup">
+    <form [formGroup]="providerFormGroup">
+      <ng-template matStepLabel>Información del Proveedor</ng-template>
+      <div
+        fxLayout="row"
+        fxLayout.md="column"
+        fxFlexAlign="space-between"
+        fxLayoutGap="1rem"
+      >
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Proveedor</mat-label>
+          <mat-select formControlName="supplierId">
+            <mat-option
+              *ngFor="let item of suppliers"
+              [value]="item.supplierId"
+            >
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Numero de Factura</mat-label>
+          <input matInput formControlName="supplierInvoiceId" />
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" (click)="picker.open()" fxFlex>
+          <mat-label>Fecha de Compra</mat-label>
+          <input
+            class="picker"
+            matInput
+            [disabled]="true"
+            formControlName="date"
+            [matDatepicker]="picker"
+            (click)="picker.open()"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="!!getErrorMessage()">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="step-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          matStepperNext
+          [disabled]="providerFormGroup.invalid"
+        >
+          Siguiente
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="purchaseDetailGroup">
+    <form [formGroup]="purchaseDetailGroup">
+      <ng-template matStepLabel>Información de la compra</ng-template>
+
+      <div style="margin: 10px 0 10px 0px">
+        <button mat-raised-button color="primary" (click)="addProduct()">
+          <mat-icon mat-list-icon>add</mat-icon>Agregar Producto
+        </button>
+      </div>
+
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="productId">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.productId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="suggestedRetailPrice">
+          <th mat-header-cell *matHeaderCellDef>Precio Sugerido</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.suggestedRetailPrice }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unitCost">
+          <th mat-header-cell *matHeaderCellDef>Costo</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.unitCost }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.quantity }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subtotal">
+          <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.subtotal }}
+          </td>
+        </ng-container>
+
+        <!--  Buttons -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="buttons">
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="removeProduct(element.productId)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div class="step-actions">
+        <button mat-button matStepperPrevious>Volver</button>
+        <button
+          mat-raised-button
+          color="primary"
+          matStepperNext
+          [disabled]="homeData.length == 0"
+        >
+          Siguiente
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="invoiceDetailGroup">
+    <form [formGroup]="invoiceDetailGroup">
+      <ng-template matStepLabel>Información de la Factura</ng-template>
+      <p>
+        Ingrese la información adicional de la factura de la compra realizada.
+      </p>
+      <div
+        fxLayout="row"
+        fxLayout.md="column"
+        fxFlexAlign="space-between"
+        fxLayoutGap="1rem"
+      >
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Descuento</mat-label>
+          <input
+            matInput
+            min="0"
+            formControlName="discount"
+            type="number"
+          />
+          <mat-icon matSuffix>local_offer</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Impuesto</mat-label>
+          <input
+            matInput
+            min="0"
+            formControlName="tax"
+            type="number"
+          />
+          <mat-icon matSuffix>monetization_on</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="step-actions">
+        <button mat-button matStepperPrevious>Volver</button>
+        <button mat-raised-button color="primary" (click)="createPurchase()">
+          Finalizar
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+</mat-dialog-actions>

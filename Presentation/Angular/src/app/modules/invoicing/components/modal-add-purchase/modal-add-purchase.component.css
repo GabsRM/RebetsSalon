@@ -1,0 +1,22 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.picker {
+  cursor: pointer;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.step-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}

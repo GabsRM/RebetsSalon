@@ -1,0 +1,9 @@
+.responsive-table-container {
+  overflow-x: auto;
+  background: #000;
+}
+
+.mat-table {
+  width: 100%;
+  table-layout: auto;
+}

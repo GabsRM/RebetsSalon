@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>{{actionTitle}} Proveedor</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formSupplier">
+        <mat-grid-list cols="1" rowHeight="90px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput formControlName="address">
+                    <mat-icon matSuffix>address</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput formControlName="phone" type="phone">
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="formSupplier.invalid"
+        (click)="saveEdit_Supplier()">{{actionButton}}</button>
+
+</mat-dialog-actions>

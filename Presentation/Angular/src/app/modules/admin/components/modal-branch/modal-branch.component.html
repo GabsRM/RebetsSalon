@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ actionTitle }} Sucursal</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formCategory">
+    <mat-grid-list cols="1" rowHeight="90px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput autocomplete="off" formControlName="name" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Direccion</mat-label>
+          <input matInput autocomplete="off" formControlName="address" />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput autocomplete="off" formControlName="phone" />
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formCategory.invalid"
+    (click)="saveEditBranch()"
+  >
+    {{ actionButton }}
+  </button>
+</mat-dialog-actions>

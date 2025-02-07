@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{actionTitle}} Usuario</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formUser">
+        <mat-grid-list cols="1" rowHeight="90px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label >Username</mat-label>
+                    <input [readonly]="!this._comunication.showField" matInput autocomplete="off" formControlName="username">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="firstname">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput autocomplete="off" formControlName="lastname">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile *ngIf="this._comunication.showField">
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="HidePassword ? 'password' : 'text' " formControlName="password">
+                    <button mat-icon-button matSuffix (click)="HidePassword = !HidePassword" type="button">
+                        <mat-icon matSuffix>{{HidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="formUser.invalid"
+        (click)="saveEdit_User()">{{actionButton}}</button>
+</mat-dialog-actions>

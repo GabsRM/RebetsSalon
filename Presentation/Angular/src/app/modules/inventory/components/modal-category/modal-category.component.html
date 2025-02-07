@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{actionTitle}} Categoría</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formCategory">
+        <mat-grid-list cols="1" rowHeight="90px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="name">
+                    <mat-icon matSuffix>category</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput autocomplete="off" formControlName="description">
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="formCategory.invalid"
+        (click)="saveEdit_Category()">{{actionButton}}</button>
+
+</mat-dialog-actions>

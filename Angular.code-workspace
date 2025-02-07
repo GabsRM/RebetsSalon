@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "Presentation/Angular"
+		}
+	],
+	"settings": {
+		"material-icon-theme.folders.associations": {
+			"DataAccess": "Server",
+			"Presentation": "Layout",
+			"BusinessLogic": "Circleci",
+			"Properties": "Config",
+			"Swagger": "Json"
+		}
+	},
+}

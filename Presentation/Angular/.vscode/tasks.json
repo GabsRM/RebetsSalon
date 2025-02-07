@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "start-api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [ "run", "--project", "API" ],
+      "isBackground": true,
+      "problemMatcher": "$msCompile",
+      "options": {
+        "cwd": "${workspaceFolder}../../"
+      }
+    },
+    {
+      "label": "start-angular",
+      "type": "npm",
+      "script": "start",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "source": "npm",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}/Presentation/Angular"
+        ],
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        }
+      }
+    },
+    {
+      "label": "start-all",
+      "dependsOrder": "parallel",
+      "dependsOn": ["start-api", "start-angular"]
+    },
+  ]
+}

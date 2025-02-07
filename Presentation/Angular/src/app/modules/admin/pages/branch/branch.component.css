@@ -1,0 +1,35 @@
+.card-page .card-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  font-size: 15px;
+  width: 100%;
+}
+
+mat-card {
+  margin: 5px 20px 5px 20px;
+}
+
+mat-card-title {
+  padding: 20px 5px 20px 5px;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.user-card-content {
+  margin-top: 1rem;
+}

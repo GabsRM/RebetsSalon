@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Agregar Producto</h2>
+
+<mat-dialog-content>
+  <mat-divider/>
+  <form [formGroup]="formProduct">
+    <mat-form-field appearance="outline">
+      <mat-label>Producto</mat-label>
+      <input type="text" placeholder="Selecciona un producto" aria-label="Number" matInput formControlName="productId"
+        [matAutocomplete]="auto">
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of filteredOptions | async" [value]="item.productId">
+          {{ item.productId }} - {{ item.description }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Precio Sugerido</mat-label>
+      <input matInput autocomplete="off" formControlName="suggestedRetailPrice" type="number" />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Costo</mat-label>
+      <input matInput autocomplete="off" formControlName="unitCost" type="number" />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cantidad</mat-label>
+      <input matInput autocomplete="off" formControlName="quantity" type="number" />
+      <mat-icon matSuffix>storage</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close] color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="formProduct.invalid"
+    [mat-dialog-close]="formProduct.getRawValue()">
+    Agregar
+  </button>
+</mat-dialog-actions>

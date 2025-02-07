@@ -1,0 +1,18 @@
+{
+  "material-icon-theme.folders.associations": {
+    "DataAccess": "Server",
+    "Presentation": "Layout",
+    "BusinessLogic": "Circleci",
+    "Properties": "Config",
+    "Swagger": "Json"
+  },
+  "files.exclude": {
+    "**/obj/**": true,
+    "**/bin/**": true,
+    "**/.angular/**": true,
+    "**/.vs/**": true,
+    "**/package-lock.json": true,
+    "**/tsconfig.**": true,
+    "**/.vscode/**": false,
+  }
+}

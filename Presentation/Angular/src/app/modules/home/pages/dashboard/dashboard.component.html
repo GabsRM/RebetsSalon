@@ -1,0 +1,239 @@
+<div class="row gy-5 g-xl-8">
+  <div class="col-xl-8">
+    <div class="card card-xl-stretch mb-5 mb-xl-8">
+      <div class="card-header border-0 pt-5">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1">
+            Histórico de Ventas
+          </span>
+          <span class="text-muted fw-bold fs-7">
+            Ventas mensuales desde la implementación del sistema
+          </span>
+        </h3>
+
+        <div class="card-toolbar" data-kt-buttons="true">
+          <!-- <select
+            class="form-select form-select-sm form-select-solid w-125px"
+            data-control="select2"
+            data-hide-search="true"
+            data-placeholder="Status"
+          >
+            <option></option>
+            <option value="1">Approved</option>
+            <option value="2">Pending</option>
+            <option value="2">Rejected</option>
+            <option value="2">In-process</option>
+          </select> -->
+        </div>
+      </div>
+
+      <div class="card-body d-flex align-items-end pb-0 px-5">
+        <canvas
+          baseChart
+          width="1000"
+          [type]="'line'"
+          [data]="historicChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="card card-xl-stretch mb-5 mb-xl-8">
+      <div class="card-header border-0 bg-primary py-5">
+        <h3 class="card-title fw-bolder text-white">Productos más vendidos</h3>
+        <div class="card-toolbar">
+          <button
+            type="button"
+            class="btn btn-sm btn-icon btn-color-white btn-active-white btn-active-color- border-0 me-n3"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+          >
+            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
+            <span class="svg-icon svg-icon-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <rect
+                    x="5"
+                    y="5"
+                    width="5"
+                    height="5"
+                    rx="1"
+                    fill="#000000"
+                  />
+                  <rect
+                    x="14"
+                    y="5"
+                    width="5"
+                    height="5"
+                    rx="1"
+                    fill="#000000"
+                    opacity="0.3"
+                  />
+                  <rect
+                    x="5"
+                    y="14"
+                    width="5"
+                    height="5"
+                    rx="1"
+                    fill="#000000"
+                    opacity="0.3"
+                  />
+                  <rect
+                    x="14"
+                    y="14"
+                    width="5"
+                    height="5"
+                    rx="1"
+                    fill="#000000"
+                    opacity="0.3"
+                  />
+                </g>
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <canvas
+          class="bg-primary"
+          baseChart
+          width="385"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          type="bar"
+        >
+        </canvas>
+        <div
+          class="card-rounded bg-body mt-n10 position-relative card-px py-15"
+        >
+          <div
+            class="row g-0 mb-7 gap-5"
+            style="max-height: 130px; overflow-y: scroll"
+          >
+            <div class="col-4 mx-5" *ngFor="let item of bestSellings">
+              <div class="fs-6 text-gray-400">{{ item.description }}</div>
+              <div class="fs-2 fw-bolder text-gray-800">{{ item.sales }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row gy-5 g-xl-8">
+  <div class="col-xl-8">
+    <div class="card card-xl-stretch mb-5 mb-xl-8">
+      <div class="card-header border-0 pt-5">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1">Facturas Mensuales</span>
+          <span class="text-muted mt-1 fw-bold fs-7"
+            >Facturas mensuales en el último año</span
+          >
+        </h3>
+        <div
+          class="card-toolbar"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          data-bs-trigger="hover"
+          title="Click to add a user"
+        >
+          <a
+            routerLink="/invoicing/invoices/new"
+            class="btn btn-sm btn-light-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#kt_modal_invite_friends"
+          >
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+            <span class="svg-icon svg-icon-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <rect
+                  opacity="0.5"
+                  x="11.364"
+                  y="20.364"
+                  width="16"
+                  height="2"
+                  rx="1"
+                  transform="rotate(-90 11.364 20.364)"
+                  fill="black"
+                />
+                <rect
+                  x="4.36396"
+                  y="11.364"
+                  width="16"
+                  height="2"
+                  rx="1"
+                  fill="black"
+                />
+              </svg>
+            </span>
+            Agregar Factura
+          </a>
+        </div>
+      </div>
+
+      <div class="card-body py-3">
+        <canvas
+          baseChart
+          width="1000"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="card card-xl-stretch mb-5 mb-xl-8">
+      <div class="card-header border-0 pt-5">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1">
+            Productos y Servicios Vendidos
+          </span>
+          <span class="text-muted fw-bold fs-7">
+            Cantidad de Productos y Servicios vendidos este mes
+          </span>
+        </h3>
+      </div>
+
+      <div class="card-body pt-5">
+        <canvas
+          baseChart
+          [type]="'pie'"
+          [datasets]="pieChartDatasets"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend"
+          id="kt_charts_widget_1_chart"
+          style="height: 350px"
+          class="w-100"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

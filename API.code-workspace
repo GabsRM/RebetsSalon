@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "BusinessLogic",
+			"path": "BusinessLogic"
+		},
+		{
+			"name": "DataAccess",
+			"path": "DataAccess"
+		},
+		{
+			"name": "API",
+			"path": "Presentation/API"
+		}
+	],
+	"settings": {}
+}

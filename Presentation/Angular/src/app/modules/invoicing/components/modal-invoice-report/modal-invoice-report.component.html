@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Factura #{{ invoiceId }}</h2>
+
+<mat-dialog-content>
+  <pdf-viewer
+    [render-text]="true"
+    [src]="src"
+    (after-load-complete)="onLoaded($event)"
+    style="width: 310px; height: 500px"
+  ></pdf-viewer>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close] color="warn">Cancelar</button>
+  <button mat-raised-button (click)="print()" [disabled]="!isPdfLoaded" color="primary">Imprimir</button>
+</mat-dialog-actions>

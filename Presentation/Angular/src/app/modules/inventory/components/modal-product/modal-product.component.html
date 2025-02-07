@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>{{actionTitle}} Producto</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formProduct">
+        <mat-grid-list cols="1" rowHeight="90px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput formControlName="description">
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>código de barra</mat-label>
+                    <input matInput formControlName="barcode">
+                    <mat-icon matSuffix>assignment</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Precio</mat-label>
+                    <input matInput formControlName="price" type="number">
+                    <mat-icon matSuffix>attach_money</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Stock mínimo</mat-label>
+                    <input matInput formControlName="minStock" type="number">
+                    <mat-icon matSuffix>storage</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Url de la imagen</mat-label>
+                    <input matInput formControlName="photoUri">
+                    <mat-icon matSuffix>image</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>-->
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Categoría</mat-label>
+                    <mat-select formControlName="categories" multiple>
+                        <mat-option *ngFor="let item of categoryList" [value]="item.categoryId">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix>category</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+
+        </mat-grid-list>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="formProduct.invalid"
+        (click)="saveEdit_Product()">{{actionButton}}</button>
+
+</mat-dialog-actions>
